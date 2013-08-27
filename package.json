@@ -1,0 +1,28 @@
+{
+  "name": "socket.io-passport",
+  "version": "0.0.0",
+  "description": "Passport middleware for upcoming Socket.IO 1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter dot"
+  },
+  "keywords": [
+    "auth",
+    "authentication",
+    "connect",
+    "socket.io",
+    "passport",
+    "middleware"
+  ],
+  "author": "Naoyuki Kanezawa <naoyuki.kanezawa@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "passport": "*",
+    "socket.io": "nkzawa/socket.io",
+    "socket.io-client": "nkzawa/socket.io-client",
+    "socket.io-bundle": "*",
+    "mocha": "*",
+    "chai": "*"
+  }
+}
