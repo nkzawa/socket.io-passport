@@ -2,7 +2,7 @@ socket.io-passport
 ==================
 [![Build Status](https://travis-ci.org/nkzawa/socket.io-passport.png?branch=master)](https://travis-ci.org/nkzawa/socket.io-passport)
 
-Passport middleware for upcoming Socket.IO 1.0.
+[Passport](https://github.com/jaredhanson/passport) middleware for upcoming Socket.IO 1.0.
 
 ## Installation
     $ npm install socket.io-passport
