@@ -1,23 +1,23 @@
-var Passport = require('passport').Passport
-  , ioPassport = require('../')
-  , expect = require('chai').expect
-  , IOPassport = ioPassport.Passport;
+var Passport = require('passport').Passport;
+var ioPassport = require('../');
+var expect = require('chai').expect;
+var IOPassport = ioPassport.Passport;
 
 
 describe('session', function() {
   describe('middleware handling a request without a login session', function() {
     beforeEach(function() {
-      var passport = new Passport()
-        , ioPassport = new IOPassport(passport);
+      var passport = new Passport();
+      var ioPassport = new IOPassport(passport);
 
       this.session = ioPassport.session();
     });
 
     describe('after augmenting with actions', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var self = this;
+        var socket = this.socket = {};
+        var req = socket.request = {};
 
         req._passport = {};
         req._passport.session = {};
@@ -43,21 +43,21 @@ describe('session', function() {
 
   describe('middleware handling a request with a login session', function() {
     beforeEach(function() {
-      var passport = new Passport()
-        , ioPassport = new IOPassport(passport);
+      var passport = new Passport();
+      var ioPassport = new IOPassport(passport);
 
       this.session = ioPassport.session();
     });
 
     describe('after augmenting with actions', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var self = this;
+        var socket = this.socket = {};
+        var req = socket.request = {};
 
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, { id: user });
         };
         req._passport.session = {};
@@ -91,21 +91,21 @@ describe('session', function() {
 
   describe('middleware handling a request with a login session using user ID 0', function() {
     beforeEach(function() {
-      var passport = new Passport()
-        , ioPassport = new IOPassport(passport);
+      var passport = new Passport();
+      var ioPassport = new IOPassport(passport);
 
       this.session = ioPassport.session();
     });
 
     describe('after augmenting with actions', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var self = this;
+        var socket = this.socket = {};
+        var req = socket.request = {};
 
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, { id: user });
         };
         req._passport.session = {};
@@ -139,21 +139,21 @@ describe('session', function() {
 
   describe('middleware handling a request with a login session that has been invalidated', function() {
     beforeEach(function() {
-      var passport = new Passport()
-        , ioPassport = new IOPassport(passport);
+      var passport = new Passport();
+      var ioPassport = new IOPassport(passport);
 
       this.session = ioPassport.session();
     });
 
     describe('after augmenting with actions', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var self = this;
+        var socket = this.socket = {};
+        var req = socket.request = {};
 
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, false);
         };
         req._passport.session = {};
@@ -194,13 +194,13 @@ describe('session', function() {
     describe('after augmenting with actions', function() {
       beforeEach(function(done) {
         var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var socket = this.socket = {}
+        var req = socket.request = {};
 
         req._passport = {};
         req._passport.instance = {};
         req._passport.instance._userProperty = 'currentUser';
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(null, { id: user });
         };
         req._passport.session = {};
@@ -232,21 +232,21 @@ describe('session', function() {
 
   describe('strategy handling a request with a login session but badly behaving user deserializer', function() {
     beforeEach(function() {
-      var passport = new Passport()
-        , ioPassport = new IOPassport(passport);
+      var passport = new Passport();
+      var ioPassport = new IOPassport(passport);
 
       this.session = ioPassport.session();
     });
 
     describe('after augmenting with actions', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var self = this;
+        var socket = this.socket = {};
+        var req = socket.request = {};
 
         req._passport = {};
         req._passport.instance = {};
-        req._passport.instance.deserializeUser = function(user, done) {
+        req._passport.instance.deserializeUser = function(user, req, done) {
           done(new Error('failed to deserialize'));
         };
         req._passport.session = {};
@@ -273,17 +273,17 @@ describe('session', function() {
 
   describe('strategy handling a request without an initialized passport', function() {
     beforeEach(function() {
-      var passport = new Passport()
-        , ioPassport = new IOPassport(passport);
+      var passport = new Passport();
+      var ioPassport = new IOPassport(passport);
 
       this.session = ioPassport.session();
     });
 
     describe('after augmenting with actions', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var self = this;
+        var socket = this.socket = {};
+        var req = socket.request = {};
 
         function next(err) {
           self.err = err;

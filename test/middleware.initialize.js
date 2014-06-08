@@ -1,14 +1,14 @@
-var Passport = require('passport').Passport
-  , ioPassport = require('../')
-  , expect = require('chai').expect
-  , IOPassport = ioPassport.Passport;
+var Passport = require('passport').Passport;
+var ioPassport = require('../');
+var expect = require('chai').expect;
+var IOPassport = ioPassport.Passport;
 
 
 describe('initialize', function() {
   describe('middleware', function() {
     beforeEach(function() {
-      var passport = new Passport()
-        , ioPassport = new IOPassport(passport);
+      var passport = new Passport();
+      var ioPassport = new IOPassport(passport);
 
       passport.deserializeUser(function(obj, done) {
         done(null, { id: obj });
@@ -18,8 +18,8 @@ describe('initialize', function() {
 
     describe('when handling a request without a session', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {request: {}};
+        var self = this;
+        var socket = this.socket = {request: {}};
 
         function next(err) {
           self.err = err;
@@ -43,8 +43,8 @@ describe('initialize', function() {
 
     describe('when handling a request with a session', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {request: {session: {}}};
+        var self = this;
+        var socket = this.socket = {request: {session: {}}};
 
         function next(err) {
           self.err = err;
@@ -71,9 +71,9 @@ describe('initialize', function() {
 
     describe('when handling a request with a session containing passport data', function() {
       beforeEach(function(done) {
-        var self = this
-          , socket = this.socket = {}
-          , req = socket.request = {};
+        var self = this;
+        var socket = this.socket = {};
+        var req = socket.request = {};
         req.session = {};
         req.session.passport = {};
         req.session.passport.user = '123456'

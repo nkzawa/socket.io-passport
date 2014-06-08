@@ -25,8 +25,8 @@ Passport.prototype.initialize = function(options) {
   var fn = this.passport.initialize(options);
 
   return function initialize(socket, next) {
-    var req = socket.request
-      , res = req.res;
+    var req = socket.request;
+    var res = req.res;
 
     fn(req, res, next);
   };
@@ -44,8 +44,8 @@ Passport.prototype.session = function(options) {
   var fn = this.passport.session(options);
 
   return function session(socket, next) {
-    var req = socket.request
-      , res = req.res;
+    var req = socket.request;
+    var res = req.res;
 
     fn(req, res, next);
   };

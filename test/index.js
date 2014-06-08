@@ -1,7 +1,7 @@
-var Passport = require('passport').Passport
-  , ioPassport = require('../')
-  , expect = require('chai').expect
-  , IOPassport = ioPassport.Passport;
+var Passport = require('passport').Passport;
+var ioPassport = require('../');
+var expect = require('chai').expect;
+var IOPassport = ioPassport.Passport;
 
 
 describe('socket.io-passport', function() {
