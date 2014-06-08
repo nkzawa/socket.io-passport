@@ -1,15 +1,14 @@
 {
   "name": "socket.io-passport",
-  "version": "0.1.0",
-  "description": "Passport middleware for upcoming Socket.IO 1.0",
+  "version": "0.1.1",
+  "description": "Passport middleware for Socket.IO",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha --reporter dot"
+    "test": "mocha --reporter dot"
   },
   "keywords": [
     "auth",
     "authentication",
-    "connect",
     "socket.io",
     "passport",
     "middleware"
